@@ -1,4 +1,4 @@
-module github.com/lxk36/xgc2-nodes-workflow
+module github.com/XGC-Team/xgc2-nodes-workflow
 
 go 1.26.2
 
