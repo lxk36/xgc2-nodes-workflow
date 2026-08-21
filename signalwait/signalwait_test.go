@@ -22,7 +22,8 @@ func TestSignalWaitRequiresExactRecordedEventResolution(t *testing.T) {
 	input := map[string]any{"signalId": "stop-experiment"}
 	inputDigest, _ := canonicaljson.DigestValue(input)
 	request := contracts.NodeInvocationRequest{
-		InvocationID: "signal-invocation", RunID: "signal-run", NodeID: "hold",
+		SchemaVersion: protocol.InvocationSchemaVersion,
+		InvocationID:  "signal-invocation", RunID: "signal-run", NodeID: "hold",
 		TypeRef: executor.Descriptor().TypeRef, DescriptorDigest: executor.Descriptor().DescriptorDigest,
 		AttemptID: "signal-attempt", AttemptOrdinal: 1, Input: input, InputDigest: inputDigest,
 		RequestedAt: now, Deadline: now.Add(time.Hour),

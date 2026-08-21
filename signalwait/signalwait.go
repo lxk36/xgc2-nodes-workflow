@@ -53,7 +53,8 @@ func (executor *Executor) Execute(_ context.Context, request contracts.NodeInvoc
 		return contracts.NodeResult{}, err
 	}
 	return contracts.NodeResult{
-		Status: contracts.NodeResultWaiting,
+		SchemaVersion: protocol.ResultSchemaVersion,
+		Status:        contracts.NodeResultWaiting,
 		Wait: &contracts.NodeWait{
 			Kind: contracts.NodeWaitEvent, SubjectRef: signalID, ConditionDigest: conditionDigest,
 		},
@@ -81,7 +82,8 @@ func (executor *Executor) Resume(_ context.Context, request contracts.NodeResume
 		return contracts.NodeResult{}, err
 	}
 	return contracts.NodeResult{
-		Status: contracts.NodeResultSucceeded, Output: output,
+		SchemaVersion: protocol.ResultSchemaVersion,
+		Status:        contracts.NodeResultSucceeded, Output: output,
 		OutputDigest: outputDigest, EvidenceDigest: evidenceDigest,
 	}, nil
 }
